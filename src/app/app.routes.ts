@@ -34,10 +34,23 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
+        path: 'start-with-stocks',
+        loadComponent: () =>
+          import('./features/start-with-stocks/start-with-stocks.component')
+            .then((m) => m.StartWithStocksComponent)
+      },
+      {
         path: 'dashboard',
         loadComponent: () =>
           import('./features/dashboard/dashboard.component').then(
             (m) => m.DashboardComponent
+          ),
+      },
+      {
+        path: 'portfolio',
+        loadComponent: () =>
+          import('./features/portfolio/portfolio.component').then(
+            (m) => m.PortfolioComponent
           ),
       },
       {
@@ -52,6 +65,20 @@ export const routes: Routes = [
         loadComponent: () => 
           import('./features/how-to-invest/how-to-invest.component')
             .then(m => m.HowToInvestComponent)
+      },
+      {
+        path: 'settings',
+        loadComponent: () =>
+          import('./features/settings/settings.component').then(
+            (m) => m.SettingsComponent
+          ),
+      },
+      {
+        path: 'tools',
+        loadComponent: () =>
+          import('./features/tools/tools.component').then(
+            (m) => m.ToolsComponent
+          ),
       }
     ],
   },
